@@ -74,6 +74,9 @@ function BlogPage(){
             setNew_title("");
             setNew_cont("");
         })
+        await api.getBlogById(pathname.slice(10,)).then(res => {
+            setBlog_(res.data.data)
+        })
         setLoad(false)
     }
 

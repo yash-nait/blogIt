@@ -22,7 +22,6 @@ function Home(){
         await api.getAllPages().then(res => {
             setBlogs(res.data.data)
         })
-        console.log("hello")
     },[])
 
     const card = (blog) => {
@@ -64,17 +63,15 @@ function Home(){
         })
     }
 
-    const Home_bkg = () => {
-        console.log("running")
-        return(
-            <div></div>
-        );
-    }
+    // const anime = () => {
+    //     return(
+    //         <AniScr />
+    //     )
+    // }
 
     return(
         <div>
-            {/* {window.sessionStorage.getItem("firstLoadDone")===null? console.log("1"): console.log("2")} */}
-            <Home_bkg />
+            {/* {window.sessionStorage.getItem("firstLoadDone")===null? anime: null} */}
             <div className="home-bkg">
                 <h1 className="home-bkg-text">BLOG IT<span className="home-bkg-text-dash"> |</span></h1>
             </div>
