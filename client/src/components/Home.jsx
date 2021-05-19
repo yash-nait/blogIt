@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { Component, useState, useEffect } from "react"
 import BlogCard from "./BlogCard"
 import Footer from "./Footer"
 import api from '../api'
 import LoadScr from "./LoadScr"
+import AniScr from "./AniScr"
 
 function Home(){
 
@@ -17,11 +18,12 @@ function Home(){
 
     let [load, setLoad] = useState(false)
 
-    const getData = async ()=>{
+    useEffect(async()=>{
         await api.getAllPages().then(res => {
             setBlogs(res.data.data)
         })
-    }
+        console.log("hello")
+    },[])
 
     const card = (blog) => {
         
@@ -63,7 +65,7 @@ function Home(){
     }
 
     const Home_bkg = () => {
-        getData()
+        console.log("running")
         return(
             <div></div>
         );
@@ -71,8 +73,8 @@ function Home(){
 
     return(
         <div>
+            {/* {window.sessionStorage.getItem("firstLoadDone")===null? console.log("1"): console.log("2")} */}
             <Home_bkg />
-
             <div className="home-bkg">
                 <h1 className="home-bkg-text">BLOG IT<span className="home-bkg-text-dash"> |</span></h1>
             </div>

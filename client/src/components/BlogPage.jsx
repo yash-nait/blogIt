@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 
 function BlogPage(){
 
+   const { pathname } = useLocation();
+
    let [blog_, setBlog_]= useState({
     _id: "",
     topic:"",
@@ -20,12 +22,11 @@ function BlogPage(){
 
    let [load, setLoad] = useState(false)
 
-   const get_data = async () => {
-        const temp = await (await api.getBlogById(pathname.slice(10,))).data.data
-        setBlog_(temp)
-    }
-
-   const { pathname } = useLocation();
+    useState(async () => {
+        await api.getBlogById(pathname.slice(10,)).then(res => {
+            setBlog_(res.data.data)
+        })
+    },[]) 
 
     function posts(post, idx){
         return(
@@ -81,7 +82,6 @@ function BlogPage(){
     }
 
     const Blog_intro = () => {
-        get_data()
         return(
             <div className="blog-page-intro">
                 <h1 className="text-muted">Topic:</h1>
@@ -91,6 +91,7 @@ function BlogPage(){
             </div>
         )
     }
+
     return(
         <div>
             <Blog_intro />
