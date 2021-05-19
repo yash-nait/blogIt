@@ -63,15 +63,18 @@ function Home(){
         })
     }
 
-    // const anime = () => {
-    //     return(
-    //         <AniScr />
-    //     )
-    // }
+    const anime = () => {
+        setTimeout(() => {
+            window.sessionStorage.setItem("firstLoadDone", 1)
+        }, 7000);  
+        return(
+            <AniScr />
+        )
+    }
 
     return(
         <div>
-            {/* {window.sessionStorage.getItem("firstLoadDone")===null? anime: null} */}
+            {window.sessionStorage.getItem("firstLoadDone")===null? anime(): null}
             <div className="home-bkg">
                 <h1 className="home-bkg-text">BLOG IT<span className="home-bkg-text-dash"> |</span></h1>
             </div>

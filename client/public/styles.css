@@ -131,3 +131,23 @@ body{
     position: fixed;
     top: 0;
 }
+
+.Ani_sub{
+    background-color: black;
+    height: 14vw;
+    width: 100vw;
+    z-index: 100;
+
+    position: fixed;
+    top: 35vh;
+    left: 30vw;
+}
+
+.text-ani{
+    color: #0d6efd;
+    font-size: 10vw;
+    z-index: 99;
+    position: absolute;
+    top: 35vh;
+    left: 30vw;
+}
