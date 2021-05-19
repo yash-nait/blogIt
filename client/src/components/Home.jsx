@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import BlogCard from "./BlogCard"
 import Footer from "./Footer"
 import api from '../api'
+import LoadScr from "./LoadScr"
 
 function Home(){
 
@@ -13,6 +14,8 @@ function Home(){
         title: [],
         blogs: []
     })
+
+    let [load, setLoad] = useState(false)
 
     const getData = async ()=>{
         await api.getAllPages().then(res => {
@@ -44,7 +47,8 @@ function Home(){
     }
 
     const submitPage = async() => {
-        api.insertPage(new_page).then(res => {
+        setLoad(true)
+        await api.insertPage(new_page).then(res => {
             setNew_page({
                 topic: "",
                 description: "",
@@ -52,6 +56,7 @@ function Home(){
                 blogs: []
             })
         })
+        setLoad(false)
         await api.getAllPages().then(res => {
             setBlogs(res.data.data)
         })
@@ -94,6 +99,7 @@ function Home(){
                     <button className="btn btn-primary" onClick={submitPage}>Submit</button>
                 </div>
             </div>
+            {load  ? <LoadScr vis={"visible"}/>: <LoadScr vis={"hidden"}/>}
             <Footer />
         </div>
     );

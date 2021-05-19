@@ -1,5 +1,6 @@
 import { useState } from "react"
 import api from "../api";
+import LoadScr from "./LoadScr"
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function BlogPage(){
 
    let [new_cont, setNew_cont] = useState("")
 
+   let [load, setLoad] = useState(false)
 
    const get_data = async () => {
         const temp = await (await api.getBlogById(pathname.slice(10,))).data.data
@@ -63,13 +65,15 @@ function BlogPage(){
     }
 
     const submitBlog = async () => {
+        setLoad(true)
         let new_blog = await (await api.getBlogById(pathname.slice(10,))).data.data
         new_blog.title.push(new_title)
         new_blog.blogs.push(new_cont)
-        api.updateBlogById(pathname.slice(10,), new_blog).then(res =>{
+        await api.updateBlogById(pathname.slice(10,), new_blog).then(res =>{
             setNew_title("");
             setNew_cont("");
         })
+        setLoad(false)
     }
 
     function gotoTop(){
@@ -119,7 +123,7 @@ function BlogPage(){
                 <hr />
                 <button className="btn btn-primary back-top-btn" onClick={gotoTop}>TOP</button>
             </div>
-
+            {load  ? <LoadScr vis={"visible"}/>: <LoadScr vis={"hidden"}/>}
             <Footer />
         </div>
 
