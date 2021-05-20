@@ -38,7 +38,7 @@ function BlogPage(){
                 </button>
                 {/* Modal */}
                 <div className="modal fade" id={`a${idx.toString()}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-dialog modal-xl modal-dialog-scrollable">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">{post}</h5>
@@ -84,25 +84,19 @@ function BlogPage(){
         document.documentElement.scrollTop = 0;
     }
 
-    const Blog_intro = () => {
-        return(
+    return(
+        <div>
             <div className="blog-page-intro">
                 <h1 className="text-muted">Topic:</h1>
                 <h1 style={{textDecoration: "underline"}}>{blog_.topic}</h1>
                 <h1 className="text-muted">About:</h1>
                 <h4>{blog_.description}</h4>
             </div>
-        )
-    }
-
-    return(
-        <div>
-            <Blog_intro />
             <div className="blog-page-feat">
                 <hr />
                 <div>
                     <h1 className="text-muted">BLOGS</h1>
-                    {blog_.title.length===0?<div><h3 style={{color:"red"}}>Nothing here yet.</h3><h3 style={{color:"#0d6efd"}}>Go ahead add a blog.</h3></div>:blog_.title.map(posts)}
+                    {blog_.title.length===0?<h3 style={{color: "#0d6efd"}}>Nothing here yet.</h3>:blog_.title.map(posts)}
                 </div>
                 <hr />
                 <h1 className="text-muted">Add a blog</h1>
@@ -127,7 +121,7 @@ function BlogPage(){
                 <hr />
                 <button className="btn btn-primary back-top-btn" onClick={gotoTop}>TOP</button>
             </div>
-            {load  ? <LoadScr vis={"visible"}/>: <LoadScr vis={"hidden"}/>}
+            {load  ? <LoadScr vis={"block"}/>: <LoadScr vis={"none"}/>}
             <Footer />
         </div>
 

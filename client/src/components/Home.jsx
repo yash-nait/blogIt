@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import BlogCard from "./BlogCard"
 import Footer from "./Footer"
 import api from '../api'
@@ -18,10 +18,13 @@ function Home(){
 
     let [load, setLoad] = useState(false)
 
-    useEffect(async()=>{
-        await api.getAllPages().then(res => {
-            setBlogs(res.data.data)
-        })
+    useEffect(()=>{
+        async function getData(){
+            await api.getAllPages().then(res => {
+                setBlogs(res.data.data)
+            })
+        }
+        getData()
     },[])
 
     const card = (blog) => {
@@ -66,7 +69,7 @@ function Home(){
     const anime = () => {
         setTimeout(() => {
             window.sessionStorage.setItem("firstLoadDone", 1)
-        }, 7000);  
+        }, 8000);  
         return(
             <AniScr />
         )
@@ -83,7 +86,7 @@ function Home(){
             <div className="container card-cont">
                 <h1>BLOG TOPICS</h1>
                 <div className="row g-4">
-                    { blogs.map(card) }
+                    {blogs.length===0?<h1 style={{color: "#0d6efd"}}>Loading ...</h1>:blogs.map(card)}
                 </div>
             </div>
 
@@ -98,10 +101,11 @@ function Home(){
                     <h3>Description:</h3>
                     <textarea name="description" rows="5" cols="80" onChange={changeEle} value={new_page.description}></textarea>
                     <br />
+                    <br />
                     <button className="btn btn-primary" onClick={submitPage}>Submit</button>
                 </div>
             </div>
-            {load  ? <LoadScr vis={"visible"}/>: <LoadScr vis={"hidden"}/>}
+            {load  ? <LoadScr vis={"block"}/>: <LoadScr vis={"none"}/>}
             <Footer />
         </div>
     );
