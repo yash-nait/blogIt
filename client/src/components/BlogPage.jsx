@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 
 function BlogPage(){
 
+    const theme = document.querySelector("#theme-link");
+
    const { pathname } = useLocation();
 
    let [blog_, setBlog_]= useState({
@@ -86,6 +88,7 @@ function BlogPage(){
 
     return(
         <div>
+            <div style={{display: "none"}}>{theme.href = window.sessionStorage.getItem("mode")==="1"? "styles_dark.css": "styles.css"}</div>
             <div className="blog-page-intro">
                 <h1 className="text-muted">Topic:</h1>
                 <h1 style={{textDecoration: "underline"}}>{blog_.topic}</h1>
@@ -108,11 +111,11 @@ function BlogPage(){
                     <div className="create-blog">
                         <div className="">
                             <h4>Title</h4>
-                            <input type="text" onChange={changeTitle} value={new_title}></input>
+                            <input type="text" className="inp-field" onChange={changeTitle} value={new_title}></input>
                         </div>
                         <div className="">
                             <h4>Blog</h4>
-                            <textarea  name="cont" className="" rows="10" cols="80" onChange={changeCont} value={new_cont}></textarea>
+                            <textarea  name="cont" className="inp-field" rows="10" cols="80" onChange={changeCont} value={new_cont}></textarea>
                         </div>
                         <br />
                         <button className="btn btn-primary" onClick={submitBlog}>Submit</button>

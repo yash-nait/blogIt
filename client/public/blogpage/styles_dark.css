@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(250, 250, 250);
+    background-color: #121212;
+    color: white;
     margin: 0;
     text-align: center;
     overflow-x: hidden;
@@ -11,7 +12,7 @@ body{
 }
 
 .navbar{
-    background-color: rgb(245, 245, 245);
+    background-color: rgba(255, 255, 255, 0.1);
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -22,10 +23,11 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: 90vh;
+    z-index: auto;
 }
 
 .home-bkg-text{
-    color: white;
+    color: #3b89ff;
     font-size: 10vw;
     position: absolute;
     top: 35vh;
@@ -50,8 +52,15 @@ body{
 }
 
 .card{
+    background-color: rgb(0, 0, 0, 0.25);
     border: 2px;
 }
+
+.card-footer{
+    background-color: rgba(0,0,0,.35); 
+    border-top: rgba(0,0,0,.250);
+}
+
 .col-btn{
     margin: 2%;
 }
@@ -61,9 +70,9 @@ body{
 }
 
 .blog-page-intro{
-    background-color: white;
+    background-color: rgb(255, 255, 255,0.05);
     text-align: justify;
-    margin: 0 1.5% 1.5% 1.5%;
+    margin: 1% 1.5% 1.5% 1.5%;
     padding: 0.5%;
 }
 
@@ -72,14 +81,14 @@ body{
 }
 
 .blog-cont{
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(255, 255, 255);
     text-align: justify;
     margin: 0.5%;
     padding: 0.5%;
 }
 
 .blog{
-    background-color: white;
+    background-color: rgb(255, 255, 255,0.05);
     text-align: left;
     margin: .5%;
     padding: .5%;
@@ -96,10 +105,16 @@ body{
 } */
 
 .create-blog{
-    background-color: white;
+    background-color: rgb(255, 255, 255,0.05);
     text-align: left;
     margin: 1%;
     padding: 1%;
+}
+
+.inp-field{
+    background-color: rgb(255, 255, 255, 0.05);
+    color: white;
+    border: none;
 }
 
 .back-top-btn{
@@ -109,7 +124,7 @@ body{
 }
 
 .footer{
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 255, 255, 0.05);
     padding: 1%;
 }
 
@@ -149,4 +164,8 @@ body{
     position: absolute;
     top: 35vh;
     left: 30vw;
+}
+
+.modal-content{
+    background-color: rgb(0,0,0);
 }

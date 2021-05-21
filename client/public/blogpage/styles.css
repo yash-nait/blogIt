@@ -21,21 +21,19 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 90vh;
 }
 
 .home-bkg-text{
     color: white;
-    font-size: 12vw;
+    font-size: 10vw;
     position: absolute;
-    top: 35%;
-    left: 25%;
-
-    
+    top: 35vh;
+    left: 30vw;
 }
 
 .home-bkg-text-dash{
-    animation: animate 1s infinite;
+    animation: animate 0.8s infinite;
 }
 
 @keyframes animate{
@@ -83,7 +81,6 @@ body{
 .blog{
     background-color: white;
     text-align: left;
-    transition: ease-in-out 0.75s;
     margin: .5%;
     padding: .5%;
 }
@@ -114,4 +111,42 @@ body{
 .footer{
     background-color: rgb(245, 245, 245);
     padding: 1%;
+}
+
+.loading{
+    background-color: rgb(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+}
+
+.Ani{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+}
+
+.Ani_sub{
+    background-color: black;
+    height: 14vw;
+    width: 100vw;
+    z-index: 100;
+
+    position: fixed;
+    top: 35vh;
+    left: 30vw;
+}
+
+.text-ani{
+    color: #0d6efd;
+    font-size: 10vw;
+    z-index: 99;
+    position: absolute;
+    top: 35vh;
+    left: 30vw;
 }

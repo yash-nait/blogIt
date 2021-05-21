@@ -7,6 +7,8 @@ import AniScr from "./AniScr"
 
 function Home(){
 
+    const theme = document.querySelector("#theme-link");
+
     let [blogs, setBlogs] = useState(()=>[])
 
     let[new_page, setNew_page] = useState({
@@ -78,6 +80,7 @@ function Home(){
     return(
         <div>
             {window.sessionStorage.getItem("firstLoadDone")===null? anime(): null}
+            <div style={{display: "none"}}>{theme.href = window.sessionStorage.getItem("mode")==="1"? "styles_dark.css": "styles.css"}</div>
             <div className="home-bkg">
                 <h1 className="home-bkg-text">BLOG IT<span className="home-bkg-text-dash"> |</span></h1>
             </div>
@@ -85,9 +88,11 @@ function Home(){
             {/* following cards info will be mapped with info from DB */}
             <div className="container card-cont">
                 <h1>BLOG TOPICS</h1>
+                <hr />
                 <div className="row g-4">
                     {blogs.length===0?<h1 style={{color: "#0d6efd"}}>Loading ...</h1>:blogs.map(card)}
                 </div>
+                <hr />
             </div>
 
             <button className="btn btn-primary col-btn" type="button" data-bs-toggle="collapse" data-bs-target="#pageForm" aria-expanded="false" aria-controls="collapseExample">
@@ -97,9 +102,9 @@ function Home(){
             <div className="collapse page-form" id="pageForm">
                 <div className="create-blog">
                     <h3>Topic:</h3>
-                    <input name="topic" type="text" onChange={changeEle} value={new_page.topic}></input>
+                    <input name="topic" type="text" className="inp-field" onChange={changeEle} value={new_page.topic}></input>
                     <h3>Description:</h3>
-                    <textarea name="description" rows="5" cols="80" onChange={changeEle} value={new_page.description}></textarea>
+                    <textarea className="inp-field" name="description" rows="5" cols="80" onChange={changeEle} value={new_page.description}></textarea>
                     <br />
                     <br />
                     <button className="btn btn-primary" onClick={submitPage}>Submit</button>

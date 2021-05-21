@@ -10,9 +10,9 @@ function BlogCard(props){
                     <h5 className="card-title" style={{textDecoration: "underline"}}>{props.topic}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">About</h6>
                     <p className="card-text">{props.description}</p>
-                    <Link to={`/blogpage/${props.id}`} className="card-link">Read</Link>
+                    <Link to={`/blogpage/${props.id}`} className="card-link">See all blogs</Link>
                 </div>
-                <div className="card-footer" style={{backgroundColor: "rgba(0,0,0,.1)", borderTop: "rgba(0,0,0,.250)"}}>
+                <div className="card-footer">
                     <small className="text-muted">{`Last updated on ${Date(props.time).slice(0,11)}`}</small>
                 </div>
             </div>
